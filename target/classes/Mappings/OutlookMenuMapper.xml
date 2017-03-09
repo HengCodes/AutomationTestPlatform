@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="nh.automation.tools.dao.OutlookMenuMapper">
+	<resultMap id="BaseResultMap" type="nh.automation.tools.entity.OutlookMenu">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="text" jdbcType="VARCHAR" property="text" />
+		<result column="iconCls" jdbcType="VARCHAR" property="iconCls" />
+		<result column="pid" jdbcType="INTEGER" property="pid" />
+		<result column="url" jdbcType="VARCHAR" property="url" />
+		<result column="iconPosition" jdbcType="VARCHAR" property="iconPosition" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, text, iconCls, pid, url, iconPosition
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from outlookmenu
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectMenuById" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from outlookmenu
+		<if test="id != null and id !=''">
+			where id = #{id,jdbcType=INTEGER}
+		</if>
+	</select>
+	<select id="getAll" resultType="nh.automation.tools.entity.OutlookMenu"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from outlookmenu
+		where 1=1
+		order by id;
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		outlookmenu
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="nh.automation.tools.entity.OutlookMenu">
+		insert into outlookmenu (id,
+		text, iconCls,
+		pid, url, iconPosition
+		)
+		values (#{id,jdbcType=INTEGER},
+		#{text,jdbcType=VARCHAR},
+		#{iconCls,jdbcType=VARCHAR},
+		#{pid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR},
+		#{iconPosition,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="nh.automation.tools.entity.OutlookMenu">
+		insert into outlookmenu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="text != null">
+				text,
+			</if>
+			<if test="iconCls != null">
+				iconCls,
+			</if>
+			<if test="pid != null">
+				pid,
+			</if>
+			<if test="url != null">
+				url,
+			</if>
+			<if test="iconPosition != null">
+				iconPosition,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="text != null">
+				#{text,jdbcType=VARCHAR},
+			</if>
+			<if test="iconCls != null">
+				#{iconCls,jdbcType=VARCHAR},
+			</if>
+			<if test="pid != null">
+				#{pid,jdbcType=INTEGER},
+			</if>
+			<if test="url != null">
+				#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="iconPosition != null">
+				#{iconPosition,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="nh.automation.tools.entity.OutlookMenu">
+		update outlookmenu
+		<set>
+			<if test="text != null">
+				text = #{text,jdbcType=VARCHAR},
+			</if>
+			<if test="iconCls != null">
+				iconCls = #{iconCls,jdbcType=VARCHAR},
+			</if>
+			<if test="pid != null">
+				pid = #{pid,jdbcType=INTEGER},
+			</if>
+			<if test="url != null">
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="iconPosition != null">
+				iconPosition = #{iconPosition,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="nh.automation.tools.entity.OutlookMenu">
+		update outlookmenu
+		set text = #{text,jdbcType=VARCHAR},
+		iconCls =
+		#{iconCls,jdbcType=VARCHAR},
+		pid = #{pid,jdbcType=INTEGER},
+		url =
+		#{url,jdbcType=VARCHAR},
+		iconPosition =
+		#{iconPosition,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

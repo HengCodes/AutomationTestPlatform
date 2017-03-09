@@ -3,7 +3,7 @@
 <generatorConfiguration>
 	<!--配置Mysql的驱动包路径 -->
 	<classPathEntry
-		location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\6.0.2\mysql-connector-java-6.0.2.jar" />
+		location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar" />
 	<context id="context1">
 		<commentGenerator>
 			<property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
@@ -14,16 +14,16 @@
 			connectionURL="jdbc:mysql://localhost:3307/mybaits?serverTimezone=UTC"
 			driverClass="com.mysql.jdbc.Driver" password="123456" userId="root" />
 		<!--2、生成对应表的实体类 -->
-		<javaModelGenerator targetPackage="nh.automation.tools.crud.entity"
-			targetProject="SSM\src\main\java" />
+		<javaModelGenerator targetPackage="nh.automation.tools.entity"
+			targetProject="src/main/java" />
 		<!--3、生成对应表的Mapper类 -->
 		<sqlMapGenerator targetPackage="Mappings"
-			targetProject="SSM\src\main\resources" />
+			targetProject="src/main/resources" />
 		<!--4、生成对应表的Sql映射文件 -->
-		<javaClientGenerator targetPackage="nh.automation.tools.crud.mapper"
-			targetProject="SSM\src\main\java" type="XMLMAPPER" />
+		<javaClientGenerator targetPackage="nh.automation.tools.dao"
+			targetProject="src/main/java" type="XMLMAPPER" />
 		<!--5、需要生成的表 -->
-		<table tableName="employee" domainObjectName="Employee"
+		<table tableName="outlookMenu" domainObjectName="OutlookMenu"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
